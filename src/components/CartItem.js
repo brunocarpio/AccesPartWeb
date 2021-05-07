@@ -11,8 +11,8 @@ import {
 import {
   AddIcon,
   MinusIcon,
-} from '@chakra-ui/icons'
-import { CartItemsContext } from '../App'
+} from '@chakra-ui/icons';
+import { CartItemsContext } from '../App';
 
 
 function CartItem(props) {

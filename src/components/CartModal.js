@@ -29,14 +29,23 @@ function CartModal(props) {
 
   return (
     <>
-      <Box ref={finalRef} tabIndex={-1} position='relative'>
+      <Box
+        ref={finalRef}
+        tabIndex={-1}
+        position='relative'
+      >
         <IconButton
           aria-label='Carrito de compras.'
           icon={<Icon as={FiShoppingCart} w={7} h={7} />}
           variant={'ghost'}
           onClick={onOpen}
         />
-        <Badge colorScheme='red' position='absolute' top='-2' right='-2'>
+        <Badge
+          colorScheme='red'
+          position='absolute'
+          top='-2'
+          right='-2'
+        >
           {props.cart.total_unique_items}
         </Badge>
       </Box>

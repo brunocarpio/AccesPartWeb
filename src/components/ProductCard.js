@@ -86,9 +86,14 @@ function ProductCard(props) {
             AccesPart
           </Text>
           <Stack direction={'row'} align={'center'}>
-            <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={'500'}>
+            <Text
+              fontSize={'lg'}
+              fontFamily={'body'}
+              fontWeight={'600'}
+              textTransform={'uppercase'}
+            >
               {props.product.name}
-            </Heading>
+            </Text>
             <Tooltip
               label='Añadir al carrito'
               bg='white'
@@ -108,7 +113,12 @@ function ProductCard(props) {
               S/ {props.product.price.raw}
             </Text>
           </Stack>
-          <Select placeholder='seleccionar' onChange={e => handleOption(e)} variant='filled' textTransform='capitalize'>
+          <Select
+            placeholder='seleccionar'
+            onChange={e => handleOption(e)}
+            variant='filled'
+            textTransform='capitalize'
+          >
             {options.map((option) => <option key={option.key} value={option.value}>{option.text}</option>)}
           </Select>
         </Stack>

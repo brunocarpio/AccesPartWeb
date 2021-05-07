@@ -10,12 +10,50 @@ import {
   Image,
   useDisclosure,
   Button,
+  Center,
+  Text,
+  Box,
 } from "@chakra-ui/react";
 import Carousel from 'react-bootstrap/Carousel';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function ProductModal(props) {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const carouselItems = [];
+
+  console.log(props.product);
+  console.log(carouselItems);
+
+  for (let i = 0; i < props.product.assets.length; i++) {
+    carouselItems.push(
+      <Carousel.Item key={props.product.assets[i].id}>
+        <Image
+          rounded={'md'}
+          objectFit={'cover'}
+          src={props.product.assets[i].url}
+          alt=''
+        />
+        <Carousel.Caption>
+          <Box>
+            <Text
+              textTransform='uppercase'
+              fontSize={'lg'}
+              fontWeight={'700'}
+            >
+              {props.product.name}
+            </Text>
+            <Text
+              dangerouslySetInnerHTML={{__html: props.product.description}}
+            />
+          </Box>
+        </Carousel.Caption>
+      </Carousel.Item>
+    );
+  }
+
 
   return (
     <>
@@ -28,34 +66,30 @@ function ProductModal(props) {
         cursor={'pointer'}
         onClick={onOpen}
       />
-      <Modal isOpen={isOpen} onClose={onClose}>
+
+      <Modal isOpen={isOpen} onClose={onClose} size='xl'>
         <ModalOverlay />
 
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
+          <ModalHeader></ModalHeader>
           <ModalCloseButton />
 
           <ModalBody>
-            <Carousel>
-              <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  src={props.product.media.source}
-                  alt="First slide"
-                />
-                <Carousel.Caption>
-                  <h3>First slide label</h3>
-                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                </Carousel.Caption>
-              </Carousel.Item>
-            </Carousel>
+            <Center>
+              <Carousel
+                nextLabel={null}
+                prevLabel={null}
+                fade={true}
+              >
+                {carouselItems}
+              </Carousel>
+            </Center>
           </ModalBody>
 
           <ModalFooter>
             <Button colorScheme="blue" mr={3} onClick={onClose}>
               Close
             </Button>
-            <Button variant="ghost">Secondary Action</Button>
           </ModalFooter>
         </ModalContent>
 
