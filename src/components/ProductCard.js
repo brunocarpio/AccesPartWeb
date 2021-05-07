@@ -14,6 +14,8 @@ import {
 } from '@chakra-ui/react';
 import { MdAddShoppingCart } from 'react-icons/md';
 
+import ProductModal from './ProductModal';
+
 
 function ProductCard(props) {
 
@@ -77,14 +79,7 @@ function ProductCard(props) {
               filter: 'blur(20px)',
             },
           }}>
-          <Image
-            rounded={'lg'}
-            height={'230'}
-            width={'282'}
-            objectFit={'cover'}
-            src={props.product.media.source}
-            cursor={'pointer'}
-          />
+          <ProductModal product={props.product} />
         </Box>
         <Stack pt={'10'} align={'center'}>
           <Text color={'gray.500'} fontSize={'sm'} textTransform={'uppercase'}>
